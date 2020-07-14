@@ -1,7 +1,6 @@
 import React from "react";
 import Questions from "./Questions";
 import Quiz from "./Quiz";
-import { Link } from "react-router-dom";
 import Results from "./Results";
 
 class Main extends React.Component {
