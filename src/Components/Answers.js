@@ -8,12 +8,14 @@ class Answers extends React.Component {
   render() {
     const styles = {
       height: "50px",
-      fontSize: "25px",
+      fontSize: "21px",
       border: "2px solid #ddd",
       width: "500px",
       margin: "auto",
       marginTop: "30px",
       lineHeight: "50px",
+      backgroundColor: "#F3F3F3",
+      fontFamily: "Palatino Linotype",
     };
 
     const inputStyles = {

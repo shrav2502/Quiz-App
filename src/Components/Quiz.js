@@ -23,6 +23,7 @@ class Quiz extends React.Component {
       height: "50px",
       fontSize: "23px",
       marginTop: "10px",
+      fontFamily: "Palatino Linotype",
     };
     return (
       <form onSubmit={this.handleSubmit}>

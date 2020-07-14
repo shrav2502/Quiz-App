@@ -13,6 +13,7 @@ class Main extends React.Component {
       value: "",
       score: 0,
       selectedOption: null,
+      showResult: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,6 +21,7 @@ class Main extends React.Component {
   handleClick(e) {
     if (this.state.count >= 9) {
       this.handleAnswers();
+      this.showResultButton();
       e.target.disabled = !this.state.value;
     } else {
       this.handleAnswers();
@@ -41,6 +43,18 @@ class Main extends React.Component {
     }
   };
 
+  showResultButton = () => {
+    this.setState({
+      showResult: true,
+    });
+  };
+
+  resetResultButton = () => {
+    this.setState({
+      showResult: false,
+    });
+  };
+
   handleButton = () => {
     this.setState({
       count: this.state.one,
@@ -58,10 +72,23 @@ class Main extends React.Component {
     });
   };
 
-  getResults = () => {};
+  restartGame = (val, marks) => {
+    this.setState({
+      count: val,
+      score: marks,
+    });
+  };
 
+  gotoPrevious = () => {
+    if (this.state.count > 0) {
+      this.setState((prevState) => ({
+        count: prevState.count - 1,
+      }));
+    }
+  };
   render() {
     console.log(this.state.score);
+
     const { questionBank } = this.state;
 
     const questions = questionBank.map((item) => {
@@ -80,41 +107,66 @@ class Main extends React.Component {
     });
 
     const styles = {
-      height: "600px",
+      height: "720px",
       width: "600px",
-      border: "1px solid",
       margin: "auto",
+      borderStyle: "double",
+      backgroundColor: "#EEFDFF",
+      borderRadius: "5px",
     };
 
     const buttonStyles = {
       marginTop: "40px",
       padding: "8px",
       width: "100px",
+      borderRadius: "5px",
+      fontSize: "18px",
+      cursor: "pointer",
     };
+    const display = {
+      display: "flex",
+      width: "900px",
+      margin: "auto",
+    };
+
     return (
-      <div style={styles}>
-        <Quiz
-          items={questions[this.state.count]}
-          answer={answer[this.state.count]}
-          id={id[this.state.count]}
-          correctAnswer={correctAnswer[this.state.count]}
-          handleSelection={this.handleSelection}
-          selectionOption={this.state.selectedOption}
-          handleCheck={this.handleCheck}
-        />
-        <button
-          disabled={this.state.value}
-          onClick={this.handleClick}
-          style={buttonStyles}
-        >
-          Next
-        </button>
-        <br />
-        <Results
-          count={this.state.count}
-          value={this.state.value}
-          score={this.state.score}
-        />
+      <div style={display}>
+        <p className="quizName">QUIZ</p>
+        <div style={styles} className="container">
+          <Quiz
+            items={questions[this.state.count]}
+            answer={answer[this.state.count]}
+            id={id[this.state.count]}
+            correctAnswer={correctAnswer[this.state.count]}
+            handleSelection={this.handleSelection}
+            selectionOption={this.state.selectedOption}
+            handleCheck={this.handleCheck}
+          />
+          <button
+            style={buttonStyles}
+            onClick={this.gotoPrevious}
+            disabled={this.state.count > 0 ? this.state.value : null}
+          >
+            Previous
+          </button>
+          &nbsp;
+          <button
+            disabled={this.state.count > 0 ? this.state.value : null}
+            onClick={this.handleClick}
+            style={buttonStyles}
+          >
+            Next
+          </button>
+          <br />
+          <Results
+            count={this.state.count}
+            value={this.state.value}
+            score={this.state.score}
+            restartGame={this.restartGame}
+            showResult={this.state.showResult}
+            resetResultButton={this.resetResultButton}
+          />
+        </div>
       </div>
     );
   }
