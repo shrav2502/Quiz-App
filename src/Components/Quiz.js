@@ -1,5 +1,6 @@
 import React from "react";
 import Answers from "./Answers";
+import mark from "./mark.jpg";
 
 class Quiz extends React.Component {
   handleSubmit = (e) => {
@@ -21,42 +22,66 @@ class Quiz extends React.Component {
     const { id } = this.props;
 
     const styles = {
-      // height: "80px",
-      fontSize: "20px",
-      marginTop: "30px",
-      fontFamily: "Palatino Linotype",
+      fontSize: "19px",
+      marginTop: "20px",
       textAlign: "left",
-      padding: "20px",
-      marginLeft: "80px",
-      fontWeight: "900",
+      fontWeight: "500",
+      marginButton: "20px",
+      height: "90px",
     };
 
     const styleQuestionNumber = {
-      marginTop: "30px",
-      height: "50px",
-      lineHeight: "50px",
-      fontSize: "30px",
+      height: "100px",
+      lineHeight: "120px",
+      fontSize: "35px",
       fontWeight: "700",
       textAlign: "center",
+      width: "100%",
+      marginTop: "40px",
     };
 
+    const styleQuiz = {
+      height: "450px",
+    };
+
+    const gridDisplay = {
+      display: "grid",
+      gridTemplateColumns: "120px 520px",
+      height: "300px",
+    };
     return (
-      <div>
+      <div style={styleQuiz}>
         <form onSubmit={this.handleSubmit}>
           <div style={styleQuestionNumber}>
             Question No:{this.props.questionNumber}
           </div>
-          <div style={styles}>{this.props.items}</div>
-          {answer.map((item) => {
-            return (
-              <Answers
-                item={item}
-                id={id}
-                handleOptionSelection={this.handleOptionSelection}
-                selectionOption={this.props.selectionOption}
-              />
-            );
-          })}
+
+          <div style={gridDisplay}>
+            <div>
+              <img
+                src={mark}
+                style={{
+                  height: "40px",
+                  borderRadius: "50%",
+                  marginLeft: "40px",
+                  marginTop: "25px",
+                }}
+              ></img>
+            </div>
+            <div>
+              <div style={styles}>{this.props.items}</div>
+              {answer.map((item) => {
+                return (
+                  <Answers
+                    item={item}
+                    id={id}
+                    handleOptionSelection={this.handleOptionSelection}
+                    selectionOption={this.props.selectionOption}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </form>
       </div>
     );

@@ -11,21 +11,19 @@ class Answers extends React.Component {
 
   render() {
     const styles = {
-      height: "30px",
-      fontSize: "20px",
+      height: "35px",
+      fontSize: "19px",
       width: "500px",
-      fontFamily: "Palatino Linotype",
       textAlign: "left",
-      marginLeft: "90px",
-      // marginTop: "15px",
-      fontWeight: "700",
-      color: "darkblue",
+      fontWeight: "600",
+      color: "white",
     };
 
     const inputStyles = {
       transform: "scale(1.2)",
       width: "35px",
     };
+
     return (
       <div style={styles}>
         <label htmlFor={this.props.id} className="parentLabel">

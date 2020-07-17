@@ -28,14 +28,14 @@ const ModalExample = (props) => {
     width: "25%",
     padding: "8px",
     fontSize: "18px",
-    marginTop: "70px",
     borderRadius: "6px",
     cursor: "pointer",
     marginLeft: "440px",
     fontWeight: "700",
     backgroundColor: "white",
-    border: "2px solid indigo",
-    color: "indigo",
+    border: "2px solid #2a787a",
+    color: "#2a787a",
+    marginTop: "-20px",
   };
 
   const gameRestart = () => {
@@ -61,9 +61,9 @@ const ModalExample = (props) => {
   };
 
   const againButton = {
-    marginRight: "170px",
+    marginRight: "180px",
     color: "#0f8b8d",
-    backgroundColor: "indigo",
+    backgroundColor: "#2a787a",
     borderRadius: "6px",
     color: "white",
   };

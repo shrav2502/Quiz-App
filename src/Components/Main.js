@@ -114,50 +114,49 @@ class Main extends React.Component {
     });
 
     const styles = {
-      height: "500px",
-      width: "650px",
-      margin: "auto",
-      marginTop: "50px",
-      backgroundColor: "#E8D5EC",
+      backgroundColor: "#47a8bd",
       color: "darkblue",
-      padding: "0px",
+      padding: 0,
+      color: "white",
+      height: "540px",
     };
 
     const nextButtonStyles = {
-      marginTop: "90px",
       padding: "8px",
       width: "100px",
       borderRadius: "6px",
-      fontSize: "18px",
+      fontSize: "19px",
       cursor: "pointer",
-      color: "indigo",
-      border: "2px solid indigo",
+      color: "#2a787a",
+      border: "3px solid #2a787a",
       fontWeight: "600",
     };
 
     const previousButtonStyles = {
-      marginTop: "90px",
       padding: "8px",
       width: "100px",
       borderRadius: "6px",
-      fontSize: "18px",
+      fontSize: "19px",
       cursor: "pointer",
-      border: "2px solid indigo",
-      color: "indigo",
+      border: "2px solid #2a787a",
+      color: "#2a787a",
       fontWeight: "600",
     };
 
     const buttonDisplayFlex = {
       display: "flex",
       justifyContent: "space-between",
-      width: "480px",
-      marginLeft: "90px",
+      width: "580px",
+      marginLeft: "50px",
     };
 
     const display = {
-      display: "flex",
-      width: "900px",
+      width: "750px",
       margin: "auto",
+      padding: "12px 36px 12px 36px",
+      marginTop: "60px",
+      height: "600px",
+      bottom: "0",
     };
 
     return (

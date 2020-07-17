@@ -6,12 +6,10 @@ class StartQuiz extends React.Component {
     const styles = {
       margin: "auto",
       width: "600px",
-      height: "400px",
-      border: "1px solid",
       marginTop: "100px",
       padding: "20px",
-      backgroundColor: "#E8D5EC",
-      color: "darkblue",
+      backgroundColor: "#47a8bd",
+      color: "white",
     };
 
     const contentStyling = {
@@ -25,9 +23,10 @@ class StartQuiz extends React.Component {
     const listStyling = {
       listStyle: "square",
       lineHeight: "40px",
-      fontSize: "21px",
+      fontSize: "19px",
       fontWeight: "600",
     };
+
     return (
       <div style={styles}>
         <h2 style={contentStyling}>Quizzer</h2>
@@ -47,7 +46,7 @@ class StartQuiz extends React.Component {
               borderRadius: "6px",
               color: "white",
               border: "none",
-              backgroundColor: "indigo",
+              backgroundColor: "#2a787a",
               fontWeight: "600",
             }}
           >
