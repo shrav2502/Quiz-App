@@ -114,16 +114,17 @@ class Main extends React.Component {
     });
 
     const styles = {
-      height: "550px",
-      width: "700px",
+      height: "500px",
+      width: "650px",
       margin: "auto",
       marginTop: "50px",
       backgroundColor: "#E8D5EC",
       color: "darkblue",
+      padding: "0px",
     };
 
     const nextButtonStyles = {
-      marginTop: "120px",
+      marginTop: "90px",
       padding: "8px",
       width: "100px",
       borderRadius: "6px",
@@ -135,7 +136,7 @@ class Main extends React.Component {
     };
 
     const previousButtonStyles = {
-      marginTop: "120px",
+      marginTop: "90px",
       padding: "8px",
       width: "100px",
       borderRadius: "6px",
@@ -149,6 +150,8 @@ class Main extends React.Component {
     const buttonDisplayFlex = {
       display: "flex",
       justifyContent: "space-between",
+      width: "480px",
+      marginLeft: "90px",
     };
 
     const display = {

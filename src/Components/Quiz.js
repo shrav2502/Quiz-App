@@ -21,13 +21,13 @@ class Quiz extends React.Component {
     const { id } = this.props;
 
     const styles = {
-      height: "90px",
+      // height: "80px",
       fontSize: "20px",
       marginTop: "30px",
       fontFamily: "Palatino Linotype",
       textAlign: "left",
       padding: "20px",
-      marginLeft: "90px",
+      marginLeft: "80px",
       fontWeight: "900",
     };
 

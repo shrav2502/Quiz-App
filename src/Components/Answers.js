@@ -11,13 +11,13 @@ class Answers extends React.Component {
 
   render() {
     const styles = {
-      height: "15px",
+      height: "30px",
       fontSize: "20px",
       width: "500px",
       fontFamily: "Palatino Linotype",
       textAlign: "left",
-      marginLeft: "100px",
-      marginTop: "15px",
+      marginLeft: "90px",
+      // marginTop: "15px",
       fontWeight: "700",
       color: "darkblue",
     };

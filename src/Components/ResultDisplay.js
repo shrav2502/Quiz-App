@@ -28,7 +28,7 @@ const ModalExample = (props) => {
     width: "25%",
     padding: "8px",
     fontSize: "18px",
-    marginTop: "90px",
+    marginTop: "70px",
     borderRadius: "6px",
     cursor: "pointer",
     marginLeft: "440px",
