@@ -19,26 +19,46 @@ class Quiz extends React.Component {
   render() {
     const { answer } = this.props;
     const { id } = this.props;
+
     const styles = {
-      height: "50px",
-      fontSize: "23px",
-      marginTop: "10px",
+      height: "90px",
+      fontSize: "20px",
+      marginTop: "30px",
       fontFamily: "Palatino Linotype",
+      textAlign: "left",
+      padding: "20px",
+      marginLeft: "90px",
+      fontWeight: "900",
     };
+
+    const styleQuestionNumber = {
+      marginTop: "30px",
+      height: "50px",
+      lineHeight: "50px",
+      fontSize: "30px",
+      fontWeight: "700",
+      textAlign: "center",
+    };
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div style={styles}>{this.props.items}</div>
-        {answer.map((item) => {
-          return (
-            <Answers
-              item={item}
-              id={id}
-              handleOptionSelection={this.handleOptionSelection}
-              selectionOption={this.props.selectionOption}
-            />
-          );
-        })}
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <div style={styleQuestionNumber}>
+            Question No:{this.props.questionNumber}
+          </div>
+          <div style={styles}>{this.props.items}</div>
+          {answer.map((item) => {
+            return (
+              <Answers
+                item={item}
+                id={id}
+                handleOptionSelection={this.handleOptionSelection}
+                selectionOption={this.props.selectionOption}
+              />
+            );
+          })}
+        </form>
+      </div>
     );
   }
 }

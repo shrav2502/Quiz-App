@@ -1,40 +1,46 @@
 import React from "react";
 
 class Answers extends React.Component {
+  state = { checked: false };
   handleInputChange = (e) => {
     this.props.handleOptionSelection(e.target.value);
+    this.setState({
+      checked: !this.state.checked,
+    });
   };
 
   render() {
     const styles = {
-      height: "50px",
-      fontSize: "21px",
-      border: "2px solid #ddd",
+      height: "15px",
+      fontSize: "20px",
       width: "500px",
-      margin: "auto",
-      marginTop: "30px",
-      lineHeight: "50px",
-      backgroundColor: "#F3F3F3",
       fontFamily: "Palatino Linotype",
+      textAlign: "left",
+      marginLeft: "100px",
+      marginTop: "15px",
+      fontWeight: "700",
+      color: "darkblue",
     };
 
     const inputStyles = {
-      transform: "scale(1.5)",
-      width: "5%",
+      transform: "scale(1.2)",
+      width: "35px",
     };
     return (
       <div style={styles}>
-        <input
-          style={inputStyles}
-          type="radio"
-          name={this.props.id}
-          id={this.props.item}
-          value={this.props.item}
-          checked={this.props.selectionOption === this.props.item}
-          onChange={this.handleInputChange}
-          ref={(input) => (this.storeInput = input)}
-        />
-        <label htmlFor={this.props.id}>{this.props.item}</label>
+        <label htmlFor={this.props.id} className="parentLabel">
+          <input
+            type="radio"
+            style={inputStyles}
+            name={this.props.id}
+            id={this.props.item}
+            value={this.props.item}
+            checked={this.props.selectionOption === this.props.item}
+            onChange={this.handleInputChange}
+            ref={(input) => (this.storeInput = input)}
+          />
+          {this.props.item}
+        </label>
       </div>
     );
   }

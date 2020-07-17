@@ -24,6 +24,7 @@ class Results extends React.Component {
     let bool = false;
     this.props.resetResultButton(bool);
   };
+
   render() {
     const { count } = this.props;
     const { value } = this.props;
@@ -31,9 +32,10 @@ class Results extends React.Component {
       width: "25%",
       padding: "8px",
       fontSize: "18px",
-      marginTop: "30px",
+      marginTop: "100px",
       borderRadius: "5px",
       cursor: "pointer",
+      marginLeft: "400px",
     };
     const scoreDisplay = {
       width: "300px",
@@ -46,16 +48,20 @@ class Results extends React.Component {
     };
     return (
       <div>
-        <button
-          style={buttonStyles}
-          disabled={this.props.showResult ? value : !value}
-          onClick={this.getResults}
-        >
-          Get results
-        </button>
+        {this.props.questionNumber == 10 ? (
+          <button
+            style={buttonStyles}
+            showResultButton={this.showResultButton}
+            onClick={this.getResults}
+          >
+            Get results
+          </button>
+        ) : null}
+
         {this.state.show ? (
           <div style={scoreDisplay}>Your score is: {this.props.score}</div>
         ) : null}
+
         {this.state.show ? (
           <button onClick={this.gameRestart} style={buttonStyles}>
             Start Again

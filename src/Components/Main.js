@@ -1,7 +1,7 @@
 import React from "react";
 import Questions from "./Questions";
 import Quiz from "./Quiz";
-import Results from "./Results";
+import ResultDisplay from "./ResultDisplay";
 
 class Main extends React.Component {
   constructor() {
@@ -13,6 +13,7 @@ class Main extends React.Component {
       score: 0,
       selectedOption: null,
       showResult: false,
+      questionNumber: 1,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -26,6 +27,7 @@ class Main extends React.Component {
       this.handleAnswers();
       this.setState((prevState) => ({
         count: prevState.count + 1,
+        questionNumber: prevState.questionNumber + 1,
       }));
     }
   }
@@ -42,6 +44,11 @@ class Main extends React.Component {
     }
   };
 
+  handleFinalResult = (val) => {
+    this.setState({
+      score: this.state.score + val,
+    });
+  };
   showResultButton = () => {
     this.setState({
       showResult: true,
@@ -82,6 +89,7 @@ class Main extends React.Component {
     if (this.state.count > 0) {
       this.setState((prevState) => ({
         count: prevState.count - 1,
+        questionNumber: prevState.questionNumber - 1,
       }));
     }
   };
@@ -106,22 +114,43 @@ class Main extends React.Component {
     });
 
     const styles = {
-      height: "720px",
-      width: "600px",
+      height: "550px",
+      width: "700px",
       margin: "auto",
-      borderStyle: "double",
-      backgroundColor: "#EEFDFF",
-      borderRadius: "5px",
+      marginTop: "50px",
+      backgroundColor: "#E8D5EC",
+      color: "darkblue",
     };
 
-    const buttonStyles = {
-      marginTop: "40px",
+    const nextButtonStyles = {
+      marginTop: "120px",
       padding: "8px",
       width: "100px",
-      borderRadius: "5px",
+      borderRadius: "6px",
       fontSize: "18px",
       cursor: "pointer",
+      color: "indigo",
+      border: "2px solid indigo",
+      fontWeight: "600",
     };
+
+    const previousButtonStyles = {
+      marginTop: "120px",
+      padding: "8px",
+      width: "100px",
+      borderRadius: "6px",
+      fontSize: "18px",
+      cursor: "pointer",
+      border: "2px solid indigo",
+      color: "indigo",
+      fontWeight: "600",
+    };
+
+    const buttonDisplayFlex = {
+      display: "flex",
+      justifyContent: "space-between",
+    };
+
     const display = {
       display: "flex",
       width: "900px",
@@ -130,7 +159,6 @@ class Main extends React.Component {
 
     return (
       <div style={display}>
-        <p className="quizName">QUIZ</p>
         <div style={styles} className="container">
           <Quiz
             items={questions[this.state.count]}
@@ -140,31 +168,32 @@ class Main extends React.Component {
             handleSelection={this.handleSelection}
             selectionOption={this.state.selectedOption}
             handleCheck={this.handleCheck}
+            questionNumber={this.state.questionNumber}
           />
-          <button
-            style={buttonStyles}
-            onClick={this.gotoPrevious}
-            disabled={this.state.count > 0 ? this.state.value : null}
-          >
-            Previous
-          </button>
-          &nbsp;
-          <button
-            disabled={this.state.count > 0 ? this.state.value : null}
-            onClick={this.handleClick}
-            style={buttonStyles}
-          >
-            Next
-          </button>
+          <div style={buttonDisplayFlex}>
+            {this.state.questionNumber < 10 ? (
+              <button style={previousButtonStyles} onClick={this.gotoPrevious}>
+                Previous
+              </button>
+            ) : null}
+
+            {this.state.questionNumber < 10 ? (
+              <button onClick={this.handleClick} style={nextButtonStyles}>
+                Next
+              </button>
+            ) : null}
+          </div>
           <br />
-          <Results
-            count={this.state.count}
-            value={this.state.value}
-            score={this.state.score}
-            restartGame={this.restartGame}
-            showResult={this.state.showResult}
-            resetResultButton={this.resetResultButton}
-          />
+          {this.state.questionNumber == 10 ? (
+            <ResultDisplay
+              score={this.state.score}
+              restartGame={this.restartGame}
+              resetResultButton={this.resetResultButton}
+              selectedAnswer={this.state.selectedOption}
+              correctAnswer={correctAnswer[this.state.count]}
+              handleFinalResult={this.handleFinalResult}
+            />
+          ) : null}
         </div>
       </div>
     );
